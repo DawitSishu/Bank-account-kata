@@ -1,1 +1,1 @@
-# Bank-account-kata
+Bank account kata
