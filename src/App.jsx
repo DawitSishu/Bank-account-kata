@@ -19,6 +19,7 @@ import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import ListAltIcon from "@mui/icons-material/ListAlt";
+import Dashboard from "./Components/Dashboard";
 
 const drawerWidth = 240;
 
@@ -162,12 +163,14 @@ const App = () => {
         }}
       >
         <Toolbar />
-        <Typography variant="h4" gutterBottom>
-          {selectedPage}
-        </Typography>
-        <Typography paragraph>
-          {`This is the content for the ${selectedPage} page.`}
-        </Typography>
+        {selectedPage == "Dashboard" ? (
+          <Dashboard ChooseLink={(link) => setSelectedPage(link)} />
+        ) : (
+          <Typography paragraph>
+            {" "}
+            {`This is the content for the ${selectedPage} page.`}
+          </Typography>
+        )}
       </Box>
     </Box>
   );
