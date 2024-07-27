@@ -142,7 +142,7 @@ const Dashboard = ({ ChooseLink }) => {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", overflowX: "hidden" }}>
       <Box
         component="main"
         sx={{
