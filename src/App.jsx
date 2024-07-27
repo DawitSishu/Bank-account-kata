@@ -22,6 +22,8 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import Dashboard from "./Components/Dashboard";
 import Deposit from "./Components/Deposit";
 import Withdraw from "./Components/Withdraw";
+import Transfer from "./Components/Transfer";
+import AccountStatement from "./Components/AccountStatement";
 
 const drawerWidth = 240;
 
@@ -162,6 +164,7 @@ const App = () => {
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          minHeight: "100vh"
         }}
       >
         <Toolbar />
@@ -171,12 +174,11 @@ const App = () => {
           <Deposit />
         ) : selectedPage == "Withdraw" ? (
           <Withdraw />
-        ) : (
-          <Typography paragraph>
-            {" "}
-            {`This is the content for the ${selectedPage} page.`}
-          </Typography>
-        )}
+        ) : selectedPage == "Transfer" ? (
+          <Transfer />
+        ) : selectedPage == "Account Statement" ? (
+          <AccountStatement />
+        ) : null}
       </Box>
     </Box>
   );
