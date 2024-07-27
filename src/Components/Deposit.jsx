@@ -17,7 +17,7 @@ import toastr from "toastr";
 import "toastr/build/toastr.min.css";
 import { BalanceContext } from "../Services/BalanceContext";
 
-const DepositPage = () => {
+const Deposit = () => {
   const [amount, setAmount] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -133,4 +133,4 @@ const DepositPage = () => {
   );
 };
 
-export default DepositPage;
+export default Deposit;

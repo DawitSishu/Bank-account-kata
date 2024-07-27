@@ -21,6 +21,7 @@ import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import Dashboard from "./Components/Dashboard";
 import Deposit from "./Components/Deposit";
+import Withdraw from "./Components/Withdraw";
 
 const drawerWidth = 240;
 
@@ -168,6 +169,8 @@ const App = () => {
           <Dashboard ChooseLink={(link) => setSelectedPage(link)} />
         ) : selectedPage == "Deposit" ? (
           <Deposit />
+        ) : selectedPage == "Withdraw" ? (
+          <Withdraw />
         ) : (
           <Typography paragraph>
             {" "}
