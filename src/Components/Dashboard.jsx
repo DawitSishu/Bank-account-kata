@@ -6,6 +6,7 @@ import {
   Typography,
   Avatar,
   ListItemIcon,
+  useMediaQuery,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
@@ -33,30 +34,55 @@ const ProfileContainer = styled(Box)(({ theme }) => ({
 
 const ProfileContent = styled(Box)(({ theme }) => ({
   display: "flex",
-  alignItems: "center",
+  alignItems: "flex-start",
   marginBottom: theme.spacing(4),
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    alignItems: "center",
+  },
 }));
 
 const ProfileImage = styled(Avatar)(({ theme }) => ({
   width: theme.spacing(40),
   height: theme.spacing(40),
   marginRight: theme.spacing(3),
+  [theme.breakpoints.down("sm")]: {
+    width: theme.spacing(30),
+    height: theme.spacing(30),
+    marginBottom: theme.spacing(2),
+    marginRight: 0,
+  },
 }));
 
 const ProfileDetails = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
+  alignItems: "flex-start",
+  [theme.breakpoints.down("sm")]: {
+    alignItems: "flex-start",
+  },
 }));
 
 const DetailItem = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   marginBottom: theme.spacing(2),
+  [theme.breakpoints.down("sm")]: {
+    justifyContent: "flex-start",
+    width: "100%",
+  },
 }));
 
 const BoldText = styled(Typography)(({ theme }) => ({
   fontWeight: "bold",
   marginRight: theme.spacing(1),
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "1rem",
+  },
+}));
+
+const ValueText = styled(Typography)(({ theme }) => ({
+  marginLeft: theme.spacing(1),
 }));
 
 const LinkBoxContainer = styled(Box)(({ theme }) => ({
@@ -64,6 +90,7 @@ const LinkBoxContainer = styled(Box)(({ theme }) => ({
   justifyContent: "space-around",
   width: "100%",
   maxWidth: "800px",
+  flexWrap: "wrap",
   marginTop: theme.spacing(4),
 }));
 
@@ -80,6 +107,7 @@ const LinkBox = styled(Box)(({ theme }) => ({
   textDecoration: "none",
   color: theme.palette.text.primary,
   cursor: "pointer",
+  margin: theme.spacing(1),
   "&:hover": {
     boxShadow: theme.shadows[6],
     backgroundColor: theme.palette.grey[100],
@@ -88,6 +116,7 @@ const LinkBox = styled(Box)(({ theme }) => ({
 
 const Dashboard = ({ ChooseLink }) => {
   const { balance } = useContext(BalanceContext);
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const profile = {
     name: "John Doe",
@@ -131,42 +160,42 @@ const Dashboard = ({ ChooseLink }) => {
                   <PersonIcon />
                 </ListItemIcon>
                 <BoldText variant="h6">Name:</BoldText>
-                <Typography variant="h6">{profile.name}</Typography>
+                <ValueText variant="h6">{profile.name}</ValueText>
               </DetailItem>
               <DetailItem>
                 <ListItemIcon>
                   <EmailIcon />
                 </ListItemIcon>
                 <BoldText variant="h6">Email:</BoldText>
-                <Typography variant="h6">{profile.email}</Typography>
+                <ValueText variant="h6">{profile.email}</ValueText>
               </DetailItem>
               <DetailItem>
                 <ListItemIcon>
                   <PhoneIcon />
                 </ListItemIcon>
                 <BoldText variant="h6">Phone:</BoldText>
-                <Typography variant="h6">{profile.phone}</Typography>
+                <ValueText variant="h6">{profile.phone}</ValueText>
               </DetailItem>
               <DetailItem>
                 <ListItemIcon>
                   <HomeIcon />
                 </ListItemIcon>
                 <BoldText variant="h6">Address:</BoldText>
-                <Typography variant="h6">{profile.address}</Typography>
+                <ValueText variant="h6">{profile.address}</ValueText>
               </DetailItem>
               <DetailItem>
                 <ListItemIcon>
                   <AccountBalanceIcon />
                 </ListItemIcon>
                 <BoldText variant="h6">Account Number:</BoldText>
-                <Typography variant="h6">{profile.accountNumber}</Typography>
+                <ValueText variant="h6">{profile.accountNumber}</ValueText>
               </DetailItem>
               <DetailItem>
                 <ListItemIcon>
                   <MonetizationOnIcon />
                 </ListItemIcon>
                 <BoldText variant="h6">Balance:</BoldText>
-                <Typography variant="h6">${balance.toLocaleString()}</Typography>
+                <ValueText variant="h6">${balance.toLocaleString()}</ValueText>
               </DetailItem>
             </ProfileDetails>
           </ProfileContent>
