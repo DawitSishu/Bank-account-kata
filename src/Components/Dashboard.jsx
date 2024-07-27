@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   AppBar,
   Box,
@@ -19,6 +19,7 @@ import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import { styled } from "@mui/system";
 import logo from "../assets/jd.jpg";
+import { BalanceContext } from "../Services/BalanceContext";
 
 const drawerWidth = 240;
 
@@ -86,13 +87,14 @@ const LinkBox = styled(Box)(({ theme }) => ({
 }));
 
 const Dashboard = ({ ChooseLink }) => {
+  const { balance } = useContext(BalanceContext);
+
   const profile = {
     name: "John Doe",
     email: "john.doe@example.com",
     phone: "+1234567890",
     address: "123 Main Street, Anytown, USA",
     accountNumber: "123456789012",
-    balance: "$10,000.00",
   };
 
   const links = [
@@ -164,7 +166,7 @@ const Dashboard = ({ ChooseLink }) => {
                   <MonetizationOnIcon />
                 </ListItemIcon>
                 <BoldText variant="h6">Balance:</BoldText>
-                <Typography variant="h6">{profile.balance}</Typography>
+                <Typography variant="h6">${balance.toLocaleString()}</Typography>
               </DetailItem>
             </ProfileDetails>
           </ProfileContent>
